@@ -25,15 +25,25 @@ public class Main {
         // dodanie słowa do mapy jeśli istnieje wraz z liczbą wystąpień.
         // jeśli nie istnieje, tworzy się nowa para klucz-wartość
         for(String slowo : slowa) {
-            wystapienia_slow.putIfAbsent(slowo, 1);
-            wystapienia_slow.computeIfPresent(slowo, (k, v) -> v + 1);
+            Optional<Integer> slowo_count = Optional.ofNullable(wystapienia_slow.get(slowo));
+            if (slowo_count.isPresent()) {
+                wystapienia_slow.compute(slowo, (k, v) -> v + 1);
+            } else {
+                wystapienia_slow.put(slowo, 1);
+            }
         }
 
         // jak wyżej, ale znaki
         for(String znak : znaki) {
-            wystapienia_znakow.putIfAbsent(znak, 1);
-            wystapienia_znakow.computeIfPresent(znak, (k, v) -> v + 1);
+            Optional<Integer> znak_count = Optional.ofNullable(wystapienia_znakow.get(znak));
+            if(znak_count.isPresent()) {
+                wystapienia_znakow.compute(znak, (k, v) -> v + 1);
+            } else {
+                wystapienia_znakow.put(znak, 1);
+            }
         }
+
+
 
         // przedstawienie wyniku
         System.out.println("Liczba słów w podanym zdaniu: " + liczba_slow + "\n");
