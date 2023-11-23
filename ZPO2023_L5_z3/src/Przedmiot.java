@@ -4,8 +4,16 @@ public class Przedmiot {
     private int ECTS;
     private int wymiar_godz;
     private int semestr;
+    private typ_przedmiotu typ_przedmiotu;
+    private sposob_zaliczenia sposob_zaliczenia;
 
-    public Przedmiot(String kod_przedmiotu, String nazwa_przedmiotu, int ECTS, int wymiar_godz, int semestr) {
+    public Przedmiot(
+            String kod_przedmiotu,
+            String nazwa_przedmiotu,
+            int ECTS, int wymiar_godz,
+            int semestr,
+            typ_przedmiotu typ_przedmiotu,
+            sposob_zaliczenia sposob_zaliczenia) {
         /**
          * Konstruktor
          */
@@ -14,6 +22,8 @@ public class Przedmiot {
         this.ECTS = ECTS;
         this.wymiar_godz = wymiar_godz;
         this.semestr = semestr;
+        this.typ_przedmiotu = typ_przedmiotu;
+        this.sposob_zaliczenia = sposob_zaliczenia;
     }
 
     public void setKod_przedmiotu(String kod_przedmiotu) {
@@ -36,6 +46,10 @@ public class Przedmiot {
         this.semestr = semestr;
     }
 
+    public void setTyp_przedmiotu(typ_przedmiotu typ_przedmiotu) { this.typ_przedmiotu = typ_przedmiotu; }
+
+    public void setSposob_zaliczenia(sposob_zaliczenia sposob_zaliczenia) { this.sposob_zaliczenia = sposob_zaliczenia;}
+
     public String getKod_przedmiotu() {
         return this.kod_przedmiotu;
     }
@@ -55,4 +69,8 @@ public class Przedmiot {
     public int getSemestr() {
         return this.semestr;
     }
+
+    public typ_przedmiotu getTyp_przedmiotu() { return this.typ_przedmiotu; }
+
+    public sposob_zaliczenia getSposob_zaliczenia() { return this.sposob_zaliczenia;}
 }
